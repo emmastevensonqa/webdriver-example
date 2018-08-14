@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
-    @FindBy(id = "searchLocation") //gives more info in an easy to read way
+    @FindBy(id = "searchLocation")
     private WebElement postCodeBoxID;
 
     private static final String URL = "http://www.rightmove.co.uk";
@@ -30,6 +30,6 @@ public class HomePage extends BasePage {
 
     public void clickForSaleButton(){
         driver.findElement(By.id(ForSaleBox)).click();
-
+        waitForElementToLoad(By.id("propertySearchCriteria"));
     }
 }
