@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchFiltersPage extends BasePage {
 
@@ -20,7 +22,13 @@ public class SearchFiltersPage extends BasePage {
 
     public SearchFiltersPage(WebDriver driver){
         super(driver);
-    };
+    }
+
+    @Override
+    public void waitForPageToLoad() {
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("propertySearchCriteria")));
+    }
 
     public void selectMinPrice(String minPrice) {
       new Select(minPriceDropdown).selectByVisibleText(minPrice);

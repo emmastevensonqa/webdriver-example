@@ -5,18 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.net.URL;
-import java.util.Optional;
 
 public class BaseTest {
 
-//setup test
-    // helper to run test
-
     WebDriver driver;
-
-    //null check on chromedriver in resources
-    //set chrome driver path if not null
-    //else throw exception
 
     public void setupTest() throws Exception {
         URL chromeDriverUrl = ClassLoader.getSystemResource("chromedriver");

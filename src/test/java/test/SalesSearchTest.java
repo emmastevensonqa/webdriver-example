@@ -33,20 +33,20 @@ public class SalesSearchTest extends BaseTest {
     @Test
     public void shouldPerformSalesSearch() {
         homePage.goToHomePage();
+        homePage.waitForPageToLoad();
         assertEquals("Rightmove - UK's number one property website for properties for sale and to rent", homePage.getPageTitle());
         homePage.clickPostCodeBox();
         homePage.enterPostcode("NE1");
         homePage.clickForSaleButton();
-        //Wait for Page2 to load
 
+        searchFiltersPage.waitForPageToLoad();
         assertEquals("Find property for sale in NE1", searchFiltersPage.getPageTitle());
-        //assert search fitlers form is present
 
         searchFiltersPage.selectMinPrice("100,000");
         searchFiltersPage.selectMaxBedrooms("2");
         searchFiltersPage.clickFindPropertiesButton();
-        //Wait for search results page to load
 
+        searchResultsPage.waitForPageToLoad();
         assertEquals("Properties For Sale in NE1 - Flats & Houses For Sale in NE1 - Rightmove", searchResultsPage.getPageTitle());
         assertEquals("Properties For Sale in NE1, at least £100,000, up to 2 bed", searchResultsPage.getSearchFilterTitle());
 
@@ -54,11 +54,12 @@ public class SalesSearchTest extends BaseTest {
         assertEquals("Newest Listed", searchResultsPage.getSelectedSortOrderText());
 
         assertTrue(searchResultsPage.checkZeroResultsIsNotDisplayed());
+        String normalPropertySummaryByIndex = searchResultsPage.getNormalPropertySummaryByIndex(0);
         searchResultsPage.clickNormalPropertySummaryByIndex(0);
-        //Wait for property details page to load
 
-        //assertEquals(singlePropertyPage.getPageTitle(), propertySummary);
-        //assert property details image gallery
+        singlePropertyPage.waitForPageToLoad();
+        assertEquals(normalPropertySummaryByIndex, singlePropertyPage.getPropertySummary());
+
     }
 
     @After

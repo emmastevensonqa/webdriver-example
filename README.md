@@ -1,22 +1,18 @@
-# webdriver-example
+# Rightmove test
 
-to add:
-        /*Find postcode textbox
-        * enter MK16
-        * Find For Sale button
-        * Click for sale button
-        * new page object
-        * check page has been reached sucessfully
-        *  find properties button and click it
-        *  new page object
-        *  check page reached sucessfully
-        *  check property card exists
-        *  add Package org.openqa.selenium.support to build.grade
-        *  add this to github
-        * */
-        
-        get page factory to work
-        read up on page factories and examples
-        try implement
-        
-        or roll back find by changes and carry on
+QA application test
+
+## Getting Started
+
+Run the test using your preferred IDE or in the terminal using the command `./gradlew test`
+
+### Prerequisites
+
+Encoding needs to be UTF-8
+
+
+### If I had more time...
+
+* A few of the ID's would be moved into the FindBy element declarations
+* Added different types of helper methods, for example a 'clickandwait' method
+* More asserts of the single property page - interacting with the page, eg. gallery
